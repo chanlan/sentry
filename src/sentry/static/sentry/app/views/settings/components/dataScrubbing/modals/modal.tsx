@@ -23,7 +23,9 @@ const Modal = ({
   closeModal,
 }: Props) => (
   <React.Fragment>
-    <Header closeButton>{title}</Header>
+    <Header closeButton>
+      <span data-test-id="modal-title">{title}</span>
+    </Header>
     <Body>{content}</Body>
     <Footer>
       <ButtonBar gap={1.5}>

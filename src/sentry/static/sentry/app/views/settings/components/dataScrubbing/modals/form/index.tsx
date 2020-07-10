@@ -30,8 +30,8 @@ type Props<V extends Values, K extends keyof V> = {
   sourceSuggestions: Array<SourceSuggestion>;
   onValidate: (field: K) => () => void;
   onChange: (field: K, value: string) => void;
-  onUpdateEventId?: (eventId: string) => void;
   eventId: EventId;
+  onUpdateEventId: (eventId: string) => void;
 };
 
 type State = {
@@ -149,25 +149,21 @@ class Form extends React.Component<Props<Values, KeysOfUnion<Values>>, State> {
             </Field>
           )}
         </FieldGroup>
-        {onUpdateEventId && (
-          <React.Fragment>
-            <ToggleWrapper>
-              {displayEventId ? (
-                <Toggle priority="link" onClick={this.handleToggleEventId}>
-                  {t('Hide Event ID field')}
-                  <IconChevron direction="up" size="xs" />
-                </Toggle>
-              ) : (
-                <Toggle priority="link" onClick={this.handleToggleEventId}>
-                  {t('Use Event ID for auto-completion')}
-                  <IconChevron direction="down" size="xs" />
-                </Toggle>
-              )}
-            </ToggleWrapper>
-          </React.Fragment>
-        )}
+        <ToggleWrapper>
+          {displayEventId ? (
+            <Toggle priority="link" onClick={this.handleToggleEventId}>
+              {t('Hide Event ID field')}
+              <IconChevron direction="up" size="xs" />
+            </Toggle>
+          ) : (
+            <Toggle priority="link" onClick={this.handleToggleEventId}>
+              {t('Use Event ID for auto-completion')}
+              <IconChevron direction="down" size="xs" />
+            </Toggle>
+          )}
+        </ToggleWrapper>
         <SourceGroup isExpanded={displayEventId}>
-          {onUpdateEventId && displayEventId && (
+          {displayEventId && (
             <EventIdField onUpdateEventId={onUpdateEventId} eventId={eventId} />
           )}
           <Field

@@ -280,7 +280,7 @@ describe('Data Scrubbing', () => {
       const sourceField = addRuleModal.find('StyledInput[name="source"]');
       expect(sourceField.exists()).toBe(true);
 
-      // Close Dialog
+      // Close Modal
       const cancelButton = addRuleModal.find('[aria-label="Cancel"]').hostNodes();
       expect(cancelButton.exists()).toBe(true);
       cancelButton.simulate('click');
@@ -349,12 +349,13 @@ describe('Data Scrubbing', () => {
         Object.keys(relayPiiConfig.applications)[0]
       );
 
-      // Close Dialog
+      // Close Modal
       const cancelButton = editRuleModal.find('[aria-label="Cancel"]').hostNodes();
       expect(cancelButton.exists()).toBe(true);
       cancelButton.simulate('click');
 
       expect(wrapper.find('[data-test-id="edit-rule-modal"]')).toHaveLength(0);
+      expect(updatedMethodGroup.at(1).find);
     });
   });
 });

@@ -52,7 +52,7 @@ class SelectField extends React.Component<Props> {
           }>) => (
             <components.Option isSelected={isSelected} data={data} {...props}>
               <Wrapper isSelected={isSelected}>
-                <div>{label}</div>
+                <div data-test-id="label">{label}</div>
                 {description && <Description>{`(${description})`}</Description>}
               </Wrapper>
             </components.Option>
